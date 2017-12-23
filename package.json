@@ -1,6 +1,6 @@
 {
   "name": "js-promise-recursive",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A-synchronic recursive promise calls base on different conditions.",
   "main": "index.js",
   "scripts": {
