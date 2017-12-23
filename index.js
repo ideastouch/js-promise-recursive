@@ -34,10 +34,10 @@ function pprocessList(objects, pprocess, stop) {
 	if (stop === undefined) {
 		stop = () => true;
 	}
-	const list = objects.slice(0, objects.length);
+	const list = objects.slice(0, objects.length).reverse();
 	const deferred = pDefer();
 	const recursive = () => {
-		if (stop() || objects.length > 0) {
+		if (stop() || objects.length <= 0) {
 			deferred.resolve(true);
 		} else {
 			pprocess(list.pop()).then(recursive);
