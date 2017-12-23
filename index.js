@@ -27,7 +27,7 @@ function pprocess(pprocess, continueTest, stop) {
 /**
  *
  * @param {[]} objects
- * @param {([], resolve, reject) => ()} pprocess
+ * @param {([], resolve, reject) => ()} pprocess, , return a promise that is resolved with the objects when the pprocess completes.
  * @param {() => Bool} stop
  */
 function pprocessList(objects, pprocess, stop) {
@@ -38,7 +38,7 @@ function pprocessList(objects, pprocess, stop) {
 	const deferred = pDefer();
 	const recursive = () => {
 		if (stop() || objects.length <= 0) {
-			deferred.resolve(true);
+			deferred.resolve(objects);
 		} else {
 			pprocess(list.pop()).then(recursive);
 		}

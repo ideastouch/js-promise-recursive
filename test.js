@@ -17,5 +17,5 @@ test('pprocess', async t => {
 test('pprocessList', async t => {
 	const list = [1, 2, 3, 4];
 	const result = await rPromise.pprocessList(list, delay);
-	t.is(result, true);
+	t.is(result, list);
 });
