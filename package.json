@@ -1,0 +1,45 @@
+{
+  "name": "js-promise-recursive",
+  "version": "0.2.0",
+  "description": "A-synchronic recursive promise calls base on different conditions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ideastouch/js-promise-recursive.git"
+  },
+  "keywords": [
+    "javascript",
+    "promise",
+    "recusion."
+  ],
+  "author": "Gustavo Halperin <gustavoh@ideastouch.com> (http://www.ideastouch.com)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ideastouch/js-promise-recursive/issues"
+  },
+  "homepage": "https://github.com/ideastouch/js-promise-recursive#readme",
+  "dependencies": {
+    "p-defer": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "delay": "^2.0.0",
+    "dotenv": "^4.0.0",
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "ignores": [
+      "docs/**",
+      "html/**"
+    ],
+    "extends": ".eslintrc"
+  },
+  "ava": {
+    "files": [
+      "test.js"
+    ]
+  }
+}
