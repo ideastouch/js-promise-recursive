@@ -10,7 +10,7 @@ const pDefer = require('p-defer');
  */
 function pprocess(pprocess, continueTest, stop) {
 	if (stop === undefined) {
-		stop = () => true;
+		stop = () => false;
 	}
 	const deferred = pDefer();
 	const recursive = result => {
@@ -32,12 +32,12 @@ function pprocess(pprocess, continueTest, stop) {
  */
 function pprocessList(objects, pprocess, stop) {
 	if (stop === undefined) {
-		stop = () => true;
+		stop = () => false;
 	}
 	const list = objects.slice(0, objects.length).reverse();
 	const deferred = pDefer();
 	const recursive = () => {
-		if (stop() || objects.length <= 0) {
+		if (stop() || list.length <= 0) {
 			deferred.resolve(objects);
 		} else {
 			pprocess(list.pop()).then(recursive);
