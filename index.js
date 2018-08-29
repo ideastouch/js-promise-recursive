@@ -1,6 +1,6 @@
 'use strict';
 
-const pDefer = require('p-defer');
+const Promise = require('promise');
 
 /**
  *
@@ -12,16 +12,14 @@ function pprocess(pprocess, continueTest, stop) {
 	if (stop === undefined) {
 		stop = () => false;
 	}
-	const deferred = pDefer();
 	const recursive = result => {
 		if (stop() || continueTest(result) === false) {
-			deferred.resolve(true);
+			return Promise.resolve(true);
 		} else {
-			pprocess().then(recursive);
+			return pprocess().then(recursive, Promise.reject);
 		}
 	};
-	pprocess().then(recursive);
-	return deferred.promise;
+	return pprocess().then(recursive, Promise.reject);
 }
 
 /**
@@ -35,16 +33,14 @@ function pprocessList(objects, pprocess, stop) {
 		stop = () => false;
 	}
 	const list = objects.slice(0, objects.length).reverse();
-	const deferred = pDefer();
 	const recursive = () => {
 		if (stop() || list.length <= 0) {
-			deferred.resolve(objects);
+			return Promise.resolve(objects);
 		} else {
-			pprocess(list.pop()).then(recursive);
+			return pprocess(list.pop()).then(recursive, Promise.reject);
 		}
 	};
-	recursive();
-	return deferred.promise;
+	return recursive();
 }
 
 module.exports = {

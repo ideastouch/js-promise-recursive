@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/ideastouch/js-promise-recursive#readme",
   "dependencies": {
-    "p-defer": "^1.0.0"
+    "promise": "^8.0.1"
   },
   "devDependencies": {
     "ava": "^0.24.0",
